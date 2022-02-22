@@ -3,7 +3,7 @@ Il training set ha 55000 immagini, il Test set da 10000.
 Il Fashion-MNIST è simile al MNIST DataSet, il quale è utilizzato per classificare le cifre scitte a mano, nel senso che il formato delle immagini, la divisione tra training e test sono simili.
 
 
-Classificazione dell'abbigliamento
+**Classificazione dell'abbigliamento**
 
 La mappatura di tutte le 9 classi intero/etichetta è definito in questo modo:
 0: T-shirt/top 
