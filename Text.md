@@ -97,3 +97,16 @@ Un buon punto di partenza è normalizzare i valori dei pixel delle immagini in s
 > **test_norm = test_norm / 255.0**  
 >  *# ritorna le immagini normalizzate*  
 > **return train_norm, test_norm**  
+
+La funzione prep_pixels()implementa questi comportamenti e viene fornita con i valori dei pixel per entrambi i set di dati di train e test che dovranno essere scalati.  
+Questa funzione deve essere chiamata per preparare i valori dei pixel prima di qualsiasi modellazione.  
+
+## Definire il modello  
+Obbiettivo è definire un modello di rete neurale convoluzionale di base per il problema.  
+Il modello ha due aspetti principali:  
+L’estrazione delle feature, comprendente strati di convoluzione e pooling e il classificatore, incaricato di fare le previsioni.  
+
+Per lo strato di convoluzione, possiamo iniziare con un singolo strato convoluzionario con un filtro di piccole dimensioni (3,3) e un numero modesto di filtri (32) seguito da uno strato di pooling massimo.  Le mappe dei filtri possono poi essere appiattite per fornire caratteristiche al classificatore.  
+
+Dato che il problema è una classificazione multiclasse, sappiamo che avremo bisogno di uno strato di output con 10 nodi per prevedere la distribuzione di probabilità di un'immagine appartenente a ciascuna delle 10 classi. Questo richiederà anche l'uso di una funzione di attivazione softmax. Tra l'estrattore di caratteristiche e lo strato di output, possiamo aggiungere uno strato per interpretare le caratteristiche, in questo caso con 100 nodi.
+
