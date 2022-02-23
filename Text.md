@@ -110,3 +110,35 @@ Per lo strato di convoluzione, possiamo iniziare con un singolo strato convoluzi
 
 Dato che il problema è una classificazione multiclasse, sappiamo che avremo bisogno di uno strato di output con 10 nodi per prevedere la distribuzione di probabilità di un'immagine appartenente a ciascuna delle 10 classi. Questo richiederà anche l'uso di una funzione di attivazione softmax. Tra l'estrattore di caratteristiche e lo strato di output, possiamo aggiungere uno strato per interpretare le caratteristiche, in questo caso con 100 nodi.
 
+Tutti gli strati useranno la funzione di attivazione ReLU e lo schema di inizializzazione dei pesi He.
+
+Useremo una configurazione conservativa per l’ottimizzatore “stochastic gradient descent”, con un learning rate di 0.01 e un momentum di 0.9.  
+La funzione di perdita cross-entropy sarà ottimizzata, dal momento che è adatta alla classificazione multiclasse e sara controllata la metrica di accuratezza della classificazione, che è appropriata dato che abbiamo lo stesso numero di esempi in ciascuna delle 10 classi.  
+
+Creiamo una funzione python per definire e restituire questo modello.  
+
+>  *# definisce il modello*  
+>**def define_model():**  
+>  **model = tf.keras.Sequential()**  
+>  **model.add(tf.keras.Conv2D(32, (3, 3), activation='relu', kernel_initializer='he_uniform', input_shape=(28, 28, 1)))**  
+>  **model.add(tf.keras.MaxPooling2D((2, 2)))**  
+>  **model.add(tf.keras.Flatten())**  
+>  **model.add(tf.keras.Dense(100, activation='relu', kernel_initializer='he_uniform'))**  
+>  **model.add(tf.keras.Dense(10, activation='softmax'))**  
+>  *# compile model*  
+>  **opt = tf.keras.SGD(lr=0.01, momentum=0.9)**  
+>  **model.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['accuracy'])**  
+>  **return model**  
+
+**Sequential():** Un modello sequenziale è il tipo più semplice di modello, una pila lineare di livelli. Ma ci sono alcuni difetti nell'uso dell'API del modello sequenziale, è limitato in certi punti. Non possiamo costruire reti complesse usando questa API ma la utilizzeremo solo per l’esempio.  
+**model.add():** metodo per creare un modello sequenziale in modo incrementale.   
+**Conv2D():** Questo livello crea un kernel di convoluzione che viene convogliato con l'input del livello per produrre un tensore(array multidimensionale) di output.  
+**•	filters:** Intero, la dimensionalità dello spazio di uscita (cioè il numero di filtri di uscita nella convoluzione).  
+**•	kernel_size:** specifica l'altezza e la larghezza della finestra di convoluzione 2D.  
+**•	activation:** Funzione di attivazione da utilizzare. Se non si specifica nulla, non viene applicata alcuna attivazione  
+**•	kernel_initializer:** nizializzatore per la matrice dei pesi del kernel, definiscono il modo di impostare i pesi casuali iniziali dei livelli di Keras. Vi sono molte classi disponibili in questo esempio utilizziamo “he_uniform”  
+**Input shape:** Le forme sono tuple che rappresentano quanti elementi ha una matrice o un tensore in ciascuna dimensione.  
+**MaxPooling2D:** Operazione di Max Pooling per dati spaziali 2D, il primo parametro è pool_size, specificando un solo intero la stessa lunghezza della finestra     sarà usata per entrambe le dimensioni(2x2), mentre il secondo, strides, specifica quanto lontano si sposta la finestra di pooling per ogni passo.  
+
+
+
