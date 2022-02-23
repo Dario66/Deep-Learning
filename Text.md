@@ -22,8 +22,8 @@ La mappatura di tutte le 9 classi intero/etichetta è definito in questo modo:
 Carichiamo il dataset Fashion-MNIST tramite le API Keras 
 
 
-> **from matplotlib import pyplot** *libreria  per la creazione di visualizzazioni statiche, animate e interattive in Python*  
->**from keras.datasets import fashion_mnist** *carica il Fashion-MNIST dataset*  
+> **from matplotlib import pyplot** *#libreria  per la creazione di visualizzazioni statiche, animate e interattive in Python*  
+>**from keras.datasets import fashion_mnist** *#carica il Fashion-MNIST dataset*  
 >**(trainX, trainy), (testX, testy) = fashion_mnist.load_data()**  
 >  
 >**print('Train: X=%s, y=%s' % (trainX.shape, trainy.shape))**  
@@ -42,4 +42,16 @@ Il risultato eseguito con Colab è il seguente:
 
 **Train: X=(60000, 28, 28), y=(60000,)**  
 **Test: X=(10000, 28, 28), y=(10000,)**
+
+Abbiamo 60000 immagini di 28x28 pixel per il training set e 10000 immagini di 28x28 pixel per il test set.  
+
+Ora creiamo un grafico delle prime 9 immagini nel training set.  
+
+> **for i in range(9):**  
+>   **pyplot.subplot(330 + 1 + i)** *#definisce le griglie*   
+>   **pyplot.imshow(trainX[i], cmap=pyplot.get_cmap('gray'))** *#visualizza l’immagine in scala di grigi*   
+> **pyplot.show()** *#visualizza tutte le figure**   
+
+
+
 
