@@ -53,5 +53,47 @@ Ora creiamo un grafico delle prime 9 immagini nel training set.
 > **pyplot.show()** *#visualizza tutte le figure**   
 
 
+![alt text](https://github.com/Dario66/Deep-Learning/blob/main/img1.png)  
 
+Viene creato un grafico delle prime nove immagini del DataSet che mostra immagini in scala di grigi di capi di abbigliamento.
 
+Breve descrizione delle funzioni usate:  
+**pyplot.subplot(330 + 1 + i):** #parametri della griglia del subplot codificati come un singolo intero.   
+Es. "111" significa "griglia 1x1, prima sottotrama" e "234" significa "griglia 2x3, 4a sottotrama". Nel nostrocaso la griglia sarà 3x3 con 9 sottotrame.  
+**pyplot.imshow():** #visualizza l’immagine impostando il parametro opzionale cmap per la scala di grigi.
+
+## Sviluppo di un modello di base  
+Questo è fondamentale perché comporta sia lo sviluppo dell'infrastruttura in modo che qualsiasi modello che progettiamo possa essere valutato sul set di dati, e stabilisce una linea di base nelle prestazioni del modello sul problema, con cui tutti i miglioramenti possono essere confrontati.  
+
+Il design è modulare, e possiamo sviluppare una funzione separata per ogni pezzo. Questo permette che un dato aspetto possa essere modificato o intercambiato, se lo desideriamo, separatamente dal resto.  
+Possiamo svilupparlo con cinque elementi chiave. Sono il caricamento del dataset, la preparazione del dataset, la definizione del modello, la valutazione del modello e la presentazione dei risultati.  
+
+Sul DataSet sappiamo alcune cose, per esempio che le immagini sono tutte pre-segmentate (ad esempio, ogni immagine contiene un singolo capo di abbigliamento), che le immagini hanno tutte la stessa dimensione quadrata di 28×28 pixel, e che le immagini sono in scala di grigi.  Pertanto, possiamo caricare le immagini e rimodellare gli array di dati per avere un singolo canale di colore.  
+
+>*# rimodella il dataset per avere un singolo canale*  
+>**trainX = trainX.reshape((trainX.shape[0], 28, 28, 1))**  
+>**testX = testX.reshape((testX.shape[0], 28, 28, 1))**  
+
+Sappiamo anche che ci sono 10 classi e che le classi sono rappresentate come interi unici.
+Possiamo, quindi, usare una codifica a un solo punto per l'elemento di classe di ogni campione, trasformando l'intero in un vettore binario di 10 elementi con un 1 per l'indice del valore della classe.   Possiamo ottenere questo con la funzione di utilità to_categorical().   
+
+>*# codifica dei valori*   
+>**trainY =tf.keras.utils.to_categorical(trainY)**  
+>**testY = tf.keras.utils.to_categorical(testY)**  
+
+## Preparare i dati dei pixel  
+
+Sappiamo che i valori dei pixel per ogni immagine nel DataSet sono interi unsigned nel range tra nero e bianco oppure da 0 a 255.  
+Non sappiamo il miglior modo per scalare i valori dei pixel per la modellazione, ma sappiamo che sarà necessario un certo ridimensionamento.  
+
+Un buon punto di partenza è normalizzare i valori dei pixel delle immagini in scala di grigi, per esempio ridimensionarli nell'intervallo [0,1].   Questo comporta prima la conversione del tipo di dati da interi senza segno a float, poi dividere i valori dei pixel per il valore massimo.  
+
+>**def prep_pixels(train, test):**  
+>*# converte da intero a float*  
+> **train_norm = train.astype('float32')**    
+> **test_norm = test.astype('float32')**    
+> *# normalizzazzione (0-1)*  
+> **train_norm = train_norm / 255.0**  
+> **test_norm = test_norm / 255.0**  
+>  *# ritorna le immagini normalizzate*  
+> **return train_norm, test_norm**  
