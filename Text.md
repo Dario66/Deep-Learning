@@ -155,5 +155,8 @@ Creiamo una funzione python per definire e restituire questo modello.
 **•	metrics():** Elenco delle metriche che devono essere valutate dal modello durante l'addestramento e il test  
 
 
+Il model ha anche una funzione chiamata summary() che creerà un riepilogo per il modello.
+
+![alt text](https://github.com/Dario66/Deep-Learning/blob/main/img1.png)  
 
 
