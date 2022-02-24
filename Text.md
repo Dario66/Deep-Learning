@@ -1,8 +1,13 @@
 
+Questo elaborato è stato costruito a partire da un implementazine esistente situata al seguente indirizzo:  
+https://machinelearningmastery.com/how-to-develop-a-cnn-from-scratch-for-fashion-mnist-clothing-classification/?fbclid=IwAR3nCTzPREKJ_D7sDDIlEE9FTWcBAGHIyaFKq3_LJCz-D7jkjVNHTWOQNf8  
 
-L'esempio proposto utilizza il dataset Fashion-MNIST con immagini di articoli di Zalando in formato 28x28 grayscale di 65000 prodotti suddivise in 10 categorie(6500 immagini per categoria).
-Il training set ha 55000 immagini, il Test set da 10000.
-Il Fashion-MNIST è simile al MNIST DataSet, il quale è utilizzato per classificare le cifre scitte a mano, nel senso che il formato delle immagini, la divisione tra training e test sono simili.
+Tale esempio è stato riadattato sia a livello di codice che a livello di traduzione ed eseguito sulla piattaforma di Google Colab per determinarne i risultati, che saranno poi visibili in seguito.  
+
+
+L'esempio proposto utilizza il dataset Fashion-MNIST con immagini di articoli di Zalando in formato 28x28 grayscale di 65000 prodotti suddivise in 10 categorie(6500 immagini per categoria).  
+Il training set ha 55000 immagini, il Test set da 10000.  
+Il Fashion-MNIST è simile al MNIST DataSet, il quale è utilizzato per classificare le cifre scitte a mano, nel senso che il formato delle immagini, la divisione tra training e test sono simili.  
 
 
 ## Classificazione dell'abbigliamento
