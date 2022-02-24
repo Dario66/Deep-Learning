@@ -130,15 +130,30 @@ Creiamo una funzione python per definire e restituire questo modello.
 >  **model.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['accuracy'])**  
 >  **return model**  
 
-**Sequential():** Un modello sequenziale è il tipo più semplice di modello, una pila lineare di livelli. Ma ci sono alcuni difetti nell'uso dell'API del modello sequenziale, è limitato in certi punti. Non possiamo costruire reti complesse usando questa API ma la utilizzeremo solo per l’esempio.  
-**model.add():** metodo per creare un modello sequenziale in modo incrementale.   
-**Conv2D():** Questo livello crea un kernel di convoluzione che viene convogliato con l'input del livello per produrre un tensore(array multidimensionale) di output.  
+**tf.keras.Sequential():** Un modello sequenziale è il tipo più semplice di modello, una pila lineare di livelli. Ma ci sono alcuni difetti nell'uso dell'API del modello sequenziale, è limitato in certi punti. Non possiamo costruire reti complesse usando questa API ma la utilizzeremo solo per l’esempio.  
+**model.add():** metodo per creare un modello sequenziale in modo incrementale.  
+**Conv2D():** definisce un layer convoluzionale, si devono specificare :  
+
 **•	filters:** Intero, la dimensionalità dello spazio di uscita (cioè il numero di filtri di uscita nella convoluzione).  
 **•	kernel_size:** specifica l'altezza e la larghezza della finestra di convoluzione 2D.  
 **•	activation:** Funzione di attivazione da utilizzare. Se non si specifica nulla, non viene applicata alcuna attivazione  
 **•	kernel_initializer:** nizializzatore per la matrice dei pesi del kernel, definiscono il modo di impostare i pesi casuali iniziali dei livelli di Keras. Vi sono molte classi disponibili in questo esempio utilizziamo “he_uniform”  
-**Input shape:** Le forme sono tuple che rappresentano quanti elementi ha una matrice o un tensore in ciascuna dimensione.  
-**MaxPooling2D:** Operazione di Max Pooling per dati spaziali 2D, il primo parametro è pool_size, specificando un solo intero la stessa lunghezza della finestra     sarà usata per entrambe le dimensioni(2x2), mentre il secondo, strides, specifica quanto lontano si sposta la finestra di pooling per ogni passo.  
+**•	Input shape:** Le forme sono tuple che rappresentano quanti elementi ha una matrice o un tensore in ciascuna dimensione.  
+**MaxPooling2D:** Aggiunge un livello di MaxPooling2D, il compito di questo livello è ridurre la complessità del modello ed estrarre le caratteristiche locali trovando i valori massimi per ogni pool 2 x 2, il primo parametro è pool_size, specificando un solo intero la stessa lunghezza della finestra sarà usata per entrambe le dimensioni(2x2), mentre il secondo, strides, specifica quanto lontano si sposta la finestra di pooling per ogni passo.  
+**Flatten():** aggiunge un livello e appiattisce i dati di input, la forma di output deve utilizzare tutti i parametri esistenti concatenandoli.  
+**Dense():** strato in cui tutti i nodi dello strato precedente sono connessi a tutti i nodi dello strato successivo tramite dei pesi. Come parametri accetta:  
+**•	units:** Intero positivo, dimensionalità dello spazio di output  
+**•	activation:** Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x) = x).  
+**•	kernel_initializer:** Inizializzatore per la matrice dei pesi del kernel.  
+**•	activation ():** Funzione di attivazione da utilizzare.  
+**SGD:** è un metodo iterativo per l'ottimizzazione di funzioni differenziabili, approssimazione stocastica del metodo di gradient descent.  
+**•	learning_rate:** Il tasso di apprendimento  
+**•	momentum:** iperparametro di tipo float >= 0  
+**Compile():** Configura il modello per l'addestramento:  
+**•	optimizer:** Stringa, (nome dell'ottimizzatore) o istanza dell'ottimizzatore  
+**•	loss():** Funzione di perdita  
+**•	metrics():** Elenco delle metriche che devono essere valutate dal modello durante l'addestramento e il test  
+
 
 
 
