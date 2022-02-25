@@ -454,8 +454,7 @@ Possiamo usare il nostro modello salvato per fare una previsione su nuove immagi
 Il modello presuppone che le nuove immagini siano in scala di grigi, siano state segmentate in modo che un'immagine contenga un capo di abbigliamento centrato su uno sfondo nero e che la dimensione dell'immagine sia quadrata con le dimensioni di 28×28 pixel.  
 Di seguito è riportata un'immagine estratta dal test dataset MNIST.  
 
-
-IMG7
+![alt text](https://github.com/Dario66/Deep-Learning/blob/main/img7.png)   
 
 Faremo finta che questa sia un'immagine completamente nuova e mai vista, preparata nel modo richiesto, e vedremo come potremmo usare il nostro modello salvato per predire l'intero che l'immagine rappresenta. Per questo esempio, ci aspettiamo la classe "2" per "Pullover" (chiamato anche maglione).  
 
