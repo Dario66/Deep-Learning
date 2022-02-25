@@ -406,4 +406,6 @@ Esamineremo le aree che spesso si traducono in un miglioramento. Il primo sarà 
 
 ## Padding Convolutions
 
+L'aggiunta di padding all'operazione convoluzionale può spesso comportare migliori prestazioni del modello.  
+Per impostazione predefinita, l'operazione convoluzionale utilizza il padding "valid", il che significa che le convoluzioni vengono applicate solo ove possibile. Questo può essere modificato in "same" in modo che i valori 0 vengano aggiunti attorno all'input in modo tale che l'output abbia le stesse dimensioni dell'input.   
 
