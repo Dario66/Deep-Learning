@@ -407,5 +407,88 @@ Esamineremo le aree che spesso si traducono in un miglioramento. Il primo sarà 
 ## Padding Convolutions
 
 L'aggiunta di padding all'operazione convoluzionale può spesso comportare migliori prestazioni del modello.  
-Per impostazione predefinita, l'operazione convoluzionale utilizza il padding "valid", il che significa che le convoluzioni vengono applicate solo ove possibile. Questo può essere modificato in "same" in modo che i valori 0 vengano aggiunti attorno all'input in modo tale che l'output abbia le stesse dimensioni dell'input.   
+Per impostazione predefinita, l'operazione convoluzionale utilizza il padding "valid", il che significa che le convoluzioni vengono applicate solo ove possibile. Questo può essere modificato in "same" in modo che i valori 0 vengano aggiunti attorno all'input in modo tale che l'output abbia le stesse dimensioni dell'input.
+Aggiungendo un bordo al volume di input. Con il parametro 𝑃𝑎𝑑𝑑𝑖𝑛𝑔 si denota lo spessore (in pixel) del bordo.  
+
+> *model.add(Conv2D(32, (3, 3), padding='same', activation='relu', kernel_initializer='he_uniform', input_shape=(28, 28, 1)))*  
+
+
+## Aumentare i filtri  
+
+Un filtro digitale (un piccola maschera 2D di pesi) è fatta scorrere sulle diverse posizioni di input; per ogni posizione viene generato un valore di output, eseguendo il prodotto scalare tra la maschera e la porzione dell’input coperta (entrambi trattati come vettori).  
+
+Un aumento del numero di filtri usati nello strato convoluzionale può spesso migliorare le prestazioni, poiché può fornire più opportunità per estrarre feature dalle immagini di input.  
+In questa modifica, possiamo aumentare il numero di filtri nello strato convoluzionale da 32 al doppio a 64. Ci baseremo anche sul possibile miglioramento offerto dall'uso dello "same" padding.  
+
+>*model.add(Conv2D(64, (3, 3), padding='same', activation='relu', kernel_initializer='he_uniform', input_shape=(28, 28, 1)))*  
+
+Il processo di miglioramento del modello può continuare, in questo caso, manterremo le cose semplici e utilizzeremo il modello di base come modello finale.  
+
+
+## Salvare il modello finale  
+
+>File SaveModel.py  
+
+
+## Valutare il modello finale
+
+Il processo di miglioramento del modello può continuare finché abbiamo idee, tempo e risorse per testarle.  
+
+Ad un certo punto, deve essere scelta e adottata una configurazione del modello finale. In questo caso, manterremo le cose semplici e utilizzeremo il modello di base.
+Ora possiamo caricare il modello finale e valutarlo sul test dataset.  
+
+Il modello può essere caricato tramite la funzione load_model().
+L'esempio completo del caricamento del modello salvato e della sua valutazione sul dataset di prova è riportato qui sotto.  
+
+*LoadModel.py*  
+
+L'esecuzione dell'esempio carica il modello salvato e valuta il modello sul set di dati di prova.  
+
+L'accuratezza di classificazione del modello sul test dataset viene calcolata e stampata.
+In questo caso, possiamo vedere che il modello ha raggiunto una precisione del 90.780%, o poco meno del 10% di errore di classificazione, che non è male.  
+
+
+## Previsioni  
+
+Possiamo usare il nostro modello salvato per fare una previsione su nuove immagini.  
+Il modello presuppone che le nuove immagini siano in scala di grigi, siano state segmentate in modo che un'immagine contenga un capo di abbigliamento centrato su uno sfondo nero e che la dimensione dell'immagine sia quadrata con le dimensioni di 28×28 pixel.  
+Di seguito è riportata un'immagine estratta dal test dataset MNIST.  
+
+
+IMG7
+
+Faremo finta che questa sia un'immagine completamente nuova e mai vista, preparata nel modo richiesto, e vedremo come potremmo usare il nostro modello salvato per predire l'intero che l'immagine rappresenta. Per questo esempio, ci aspettiamo la classe "2" per "Pullover" (chiamato anche maglione).  
+
+Per prima cosa, possiamo caricare l'immagine, forzare il formato in scala di grigi e forzare la dimensione a 28×28 pixel. L'immagine caricata può quindi essere ridimensionata per avere un singolo canale e rappresentare un singolo campione in un set di dati. La funzione load_image() implementa questo e restituisce l'immagine caricata pronta per la classificazione.  
+
+È importante che i valori dei pixel siano preparati nello stesso modo in cui sono stati preparati i valori dei pixel per il set di dati di addestramento quando si adatta il modello finale, in questo caso, normalizzati.  
+
+
+
+>*# load and prepare the image*  
+>**def load_image(filename):**  
+>  *# load the image*  
+>  **img = load_img(filename, grayscale=True, target_size=(28, 28))**  
+>  *# convert to array*  
+>  **img = img_to_array(img)**  
+>  *# reshape into a single sample with 1 channel*  
+>  **img = img.reshape(1, 28, 28, 1)**  
+>  *# prepare pixel data*  
+>  **img = img.astype('float32')**  
+>  **img = img / 255.0**  
+>  **return img**  
+
+
+Successivamente, possiamo caricare il modello come nella sezione precedente e chiamare la funzione predict_classes() per prevedere l'abbigliamento nell'immagine.  
+
+>*# predict the class*  
+>**result = model.predict_classes(img)**  
+
+L'esecuzione dell'esempio prima carica e prepara l'immagine, carica il modello e poi predice correttamente che l'immagine caricata rappresenta un pullover o la classe '2'.  
+
+
+
+
+
+
 
