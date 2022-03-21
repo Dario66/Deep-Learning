@@ -141,9 +141,29 @@ Dai risultati elencati non sembra esserci un miglioramento con la rete di parten
 
 Rieseguendo l'ultimo modello modificato come test per visualizzare i grafici per gli indicatori di accuratezza e perdita:
 
+> history = mynet2.fit(x_train,y_train, shuffle=True, epochs=10, batch_size=32,validation_data=(x_test,y_test))
+> # list all data in history
+> print(history.history.keys())
+> # summarize history for accuracy
+> plt.plot(history.history['accuracy'])
+> plt.plot(history.history['val_accuracy'])
+> plt.title('model accuracy')
+> plt.ylabel('accuracy')
+> plt.xlabel('epoch')
+> plt.legend(['train', 'test'], loc='upper left')
+> plt.show()
+# summarize history for loss
+> plt.plot(history.history['loss'])
+> plt.plot(history.history['val_loss'])
+> plt.title('model loss')
+> plt.ylabel('loss')
+> plt.xlabel('epoch')
+> plt.legend(['train', 'test'], loc='upper left')
+> plt.show()
+
 Epoch 10/10
 1875/1875 [==============================] - 7s 4ms/step - loss: 0.0163 - accuracy: 0.9951 - val_loss: 0.0886 - val_accuracy: 0.9775
 dict_keys(['loss', 'accuracy', 'val_loss', 'val_accuracy'])
 
 
-![alt text](http://url/to/img.png)
+![alt text](https://github.com/Dario66/Deep-Learning/blob/main/IMG1.png)
