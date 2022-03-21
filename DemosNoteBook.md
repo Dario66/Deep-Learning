@@ -1,7 +1,7 @@
 
  Demo1:   
  mnistDense.ipynb  
-w
+
 
 **rete iniziale**  
 *xin = Input(shape=(784))*  
@@ -11,7 +11,8 @@ w
 
 Model: "model"  
 _______________________________________________  
- Layer (type)                Output Shape              Param #     
+ Layer (type)                Output Shape              Param #       
+ 
 =================================================================  
  input_1 (InputLayer)        [(None, 784)]             0           
                                                                    
