@@ -1,4 +1,0 @@
-
-# ANALISI DEL MODELLO
-
-
