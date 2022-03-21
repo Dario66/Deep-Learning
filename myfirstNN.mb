@@ -23,7 +23,7 @@ Per esempio sostituisco la sigmoide con la Relu creando una nuova funzione:
       >    outputs[i] = myhiddenfunction(inputs[i])  
       > yield (inputs,outputs)  
 
-![alt text](https://github.com/Dario66/Deep-Learning/blob/main/IMG2.png)  
+![alt text](https://github.com/Dario66/Deep-Learning/blob/main/IMG_relu.png)  
 
 
 **Esercizio 2**    
