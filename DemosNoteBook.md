@@ -135,4 +135,15 @@ Risultato della computazione:
 Epoch 10/10    
 1875/1875 [==============================] - 7s 4ms/step - loss: 0.0163 - accuracy: 0.9950 - val_loss: 0.0868 - val_accuracy: 0.9769  
 
-Dai risultati elencati non sembra esserci un miglioramento con la rete di partenza, dall'accuratezza tra i due set di dati si puo notare molto overfitting.   
+Dai risultati elencati non sembra esserci un miglioramento con la rete di partenza, dall'accuratezza tra i due set di dati si puo notare molto overfitting.
+
+**Esercizio 4**  
+
+Rieseguendo l'ultimo modello modificato come test per visualizzare i grafici per gli indicatori di accuratezza e perdita:
+
+Epoch 10/10
+1875/1875 [==============================] - 7s 4ms/step - loss: 0.0163 - accuracy: 0.9951 - val_loss: 0.0886 - val_accuracy: 0.9775
+dict_keys(['loss', 'accuracy', 'val_loss', 'val_accuracy'])
+
+
+![alt text](http://url/to/img.png)
