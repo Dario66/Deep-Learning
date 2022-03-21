@@ -4,17 +4,17 @@
 
 
 **rete iniziale**  
-*xin = Input(shape=(784))*  
-*res = Dense(10,activation='softmax')(xin)*  
+> xin = Input(shape=(784))   
+> res = Dense(10,activation='softmax')(xin)   
 
-*mynet = Model(inputs=xin,outputs=res)*  
+> mynet = Model(inputs=xin,outputs=res)   
      
 Total params: 7,850  
 Trainable params: 7,850  
 Non-trainable params: 0  
 
-*mynet.compile(optimizer='adam',loss='categorical_crossentropy',metrics=['accuracy'])*  
-*mynet.fit(x_train,y_train_cat, shuffle=True, epochs=10, batch_size=32,validation_data=(x_test,y_test_cat))*  
+> mynet.compile(optimizer='adam',loss='categorical_crossentropy',metrics=['accuracy'])    
+> mynet.fit(x_train,y_train_cat, shuffle=True, epochs=10, batch_size=32,validation_data=(x_test,y_test_cat))    
   
 Epoch 10/10  
 1875/1875 [==============================] - 6s 3ms/step - loss: 0.2509 - accuracy: 0.9308 - val_loss: 0.2619 - val_accuracy: 0.9279  
@@ -22,17 +22,17 @@ Epoch 10/10
 
 
 **Modifica migliorativa proposta**  
-*xin = Input(shape=(784))*  
-*x = Dense(128,activation='relu')(xin)*  
-*res = Dense(10,activation='softmax')(x)*  
-*mynet2 = Model(inputs=xin,outputs=res)*  
+> xin = Input(shape=(784))   
+> x = Dense(128,activation='relu')(xin)   
+> res = Dense(10,activation='softmax')(x)   
+> mynet2 = Model(inputs=xin,outputs=res)   
                     
 Total params: 101,770  
 Trainable params: 101,770  
 Non-trainable params: 0  
 
-*mynet2.compile(optimizer='adam',loss='categorical_crossentropy',metrics=['accuracy'])*  
-*mynet2.fit(x_train,y_train_cat, shuffle=True, epochs=10, batch_size=32,validation_data=(x_test,y_test_cat))*  
+> mynet2.compile(optimizer='adam',loss='categorical_crossentropy',metrics=['accuracy'])   
+> mynet2.fit(x_train,y_train_cat, shuffle=True, epochs=10, batch_size=32,validation_data=(x_test,y_test_cat))   
 
 
 Epoch 10/10  
@@ -112,18 +112,27 @@ Epoch 10/10
 
 **Esercizio 3**  
 
-Adatto la rete per l'utilizzo di sparse_categorical_crossentropy:
+Adatto la rete per l'utilizzo di sparse_categorical_crossentropy:  
 
 
-> #y_train_cat = tf.keras.utils.to_categorical(y_train)
-> print(y_train_cat[0])
-> #y_test_cat = tf.keras.utils.to_categorical(y_test)
-> xin = Input(shape=(784))
-> x = Dense(128,activation='relu')(xin)
-> res = Dense(10,activation='softmax')(x)
+> #y_train_cat = tf.keras.utils.to_categorical(y_train)  
+> print(y_train_cat[0])  
+> #y_test_cat = tf.keras.utils.to_categorical(y_test)  
+> xin = Input(shape=(784))  
+> x = Dense(128,activation='relu')(xin)  
+> res = Dense(10,activation='softmax')(x)  
 
-> mynet2 = Model(inputs=xin,outputs=res)
-> mynet2.summary()
+> mynet2 = Model(inputs=xin,outputs=res)  
+> mynet2.summary()  
 
-> mynet2.compile(optimizer='adam',loss='sparse_categorical_crossentropy',metrics=['accuracy'])
-> mynet2.fit(x_train,y_train, shuffle=True, epochs=10, batch_size=32,validation_data=(x_test,y_test))
+> mynet2.compile(optimizer='adam',loss='sparse_categorical_crossentropy',metrics=['accuracy'])  
+> mynet2.fit(x_train,y_train, shuffle=True, epochs=10, batch_size=32,validation_data=(x_test,y_test))  
+
+Per i dati trattati è stata tolta la conversione to_categorical per trattare i numeri interi.  
+
+Risultato della computazione:  
+
+Epoch 10/10    
+1875/1875 [==============================] - 7s 4ms/step - loss: 0.0163 - accuracy: 0.9950 - val_loss: 0.0868 - val_accuracy: 0.9769  
+
+Dai risultati elencati non sembra esserci un miglioramento con la rete di partenza, dall'accuratezza tra i due set di dati si puo notare molto overfitting.   
