@@ -1,7 +1,7 @@
 
-## Demo1:   
-## mnistDense.ipynb  
-
+ Demo1:   
+ mnistDense.ipynb  
+w
 
 **rete iniziale**  
 *xin = Input(shape=(784))*  
