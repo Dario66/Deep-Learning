@@ -22,3 +22,5 @@ Per esempio sostituisco la sigmoide con la Relu creando una nuova funzione:
      > for i in range(0,batchsize):  
       >    outputs[i] = myhiddenfunction(inputs[i])  
       > yield (inputs,outputs)  
+
+
