@@ -142,9 +142,9 @@ Dai risultati elencati non sembra esserci un miglioramento con la rete di parten
 Rieseguendo l'ultimo modello modificato come test per visualizzare i grafici per gli indicatori di accuratezza e perdita:  
 
 > history = mynet2.fit(x_train,y_train, shuffle=True, epochs=10, batch_size=32,validation_data=(x_test,y_test))  
-> # list all data in history  
+> *list all data in history*  
 > print(history.history.keys())  
-> # summarize history for accuracy  
+> *summarize history for accuracy*  
 > plt.plot(history.history['accuracy'])  
 > plt.plot(history.history['val_accuracy'])  
 > plt.title('model accuracy')  
@@ -152,7 +152,7 @@ Rieseguendo l'ultimo modello modificato come test per visualizzare i grafici per
 > plt.xlabel('epoch')  
 > plt.legend(['train', 'test'], loc='upper left')  
 > plt.show()  
-# summarize history for loss  
+ *summarize history for loss*  
 > plt.plot(history.history['loss'])  
 > plt.plot(history.history['val_loss'])  
 > plt.title('model loss')  
