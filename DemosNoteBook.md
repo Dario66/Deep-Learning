@@ -17,7 +17,7 @@ Non-trainable params: 0
 > mynet.fit(x_train,y_train_cat, shuffle=True, epochs=10, batch_size=32,validation_data=(x_test,y_test_cat))    
   
 Epoch 10/10  
-1875/1875 [==============================] - 6s 3ms/step - loss: 0.2509 - accuracy: 0.9308 - val_loss: 0.2619 - val_accuracy: 0.9279  
+1875/1875 [=============] - 6s 3ms/step - loss: 0.2509 - accuracy: 0.9308 - val_loss: 0.2619 - val_accuracy: 0.9279  
 
 
 
@@ -36,7 +36,7 @@ Non-trainable params: 0
 
 
 Epoch 10/10  
-1875/1875 [==============================] - 7s 4ms/step - loss: 0.0166 - accuracy: 0.9946 - val_loss: 0.0781 - val_accuracy: 0.9795  
+1875/1875 [=============] - 7s 4ms/step - loss: 0.0166 - accuracy: 0.9946 - val_loss: 0.0781 - val_accuracy: 0.9795  
 
 
 **Exercises**  
@@ -68,21 +68,21 @@ mynet2.fit(x_train,y_train_cat, shuffle=True, epochs=10, batch_size=32,validatio
 
 
 Epoch 10/10  
-1875/1875 [==============================] - 12s 6ms/step - loss: 0.0174 - accuracy: 0.9938 - val_loss: 0.0923 - val_accuracy: 0.9777  
+1875/1875 [=============] - 12s 6ms/step - loss: 0.0174 - accuracy: 0.9938 - val_loss: 0.0923 - val_accuracy: 0.9777  
 
 ## Considerazioni e analisi risultati   
 Agiudicare dai dati i tempi di elaborazione, aumentando di 1 il numero di strati Densi della rete, sono aumentati.  
 Paragonando le ultime epoche per le due elaborazioni:  
 
-model_1 1875/1875 [==============================] - 7s 4ms/step - loss: 0.0166 - accuracy: 0.9946 - val_loss: 0.0781 - val_accuracy: 0.9795  
+model_1 1875/1875 [=============] - 7s 4ms/step - loss: 0.0166 - accuracy: 0.9946 - val_loss: 0.0781 - val_accuracy: 0.9795  
 
-model_2 1875/1875 [==============================] - 12s 6ms/step - loss: 0.0174 - accuracy: 0.9938 - val_loss: 0.0923 - val_accuracy: 0.9777  
+model_2 1875/1875 [=============] - 12s 6ms/step - loss: 0.0174 - accuracy: 0.9938 - val_loss: 0.0923 - val_accuracy: 0.9777  
   
 il valore di perdita, dopo ogni iterazione, risulta minore per il "model_1", sia in fase di training che in fase di validation, dove invece la differenza  risulta più accentuata, mentre l'accuratezza di entrambi i modelli differiscono di poco.  
 A giudicare dai risultati eseguiti una sola volta, il modello migliore è il primo (model_1), aggiungendo uno strato Dense ulteriore di 50 neuroni per la parte deeply Connected sembra peggiorare anche se di poco la qualità e le prestazioni del modello.  
 
 Modello migliore Model_1:
-model_1 1875/1875 [==============================] - 7s 4ms/step - loss: 0.0166 - accuracy: 0.9946 - val_loss: 0.0781 - val_accuracy: 0.9795  
+model_1 1875/1875 [=============] - 7s 4ms/step - loss: 0.0166 - accuracy: 0.9946 - val_loss: 0.0781 - val_accuracy: 0.9795  
 
 **Esercizio 2**    
 
@@ -93,7 +93,7 @@ x = Dense(128,activation='tanh')(xin)
 res = Dense(10,activation='softmax')(x)  
   
 Epoch 10/10  
-1875/1875 [==============================] - 9s 5ms/step - loss: 0.0147 - accuracy: 0.9964 - val_loss: 0.0830 - val_accuracy: 0.9772  
+1875/1875 [=============] - 9s 5ms/step - loss: 0.0147 - accuracy: 0.9964 - val_loss: 0.0830 - val_accuracy: 0.9772  
 
 si puo notare leggendo i risultati di accuracy e val_accuracy che la differenza si sta accentuando, questo significa che il modello si adatta meglio al dataset di training, ma sta perdendo la sua capacità di fare predizioni sui futuri nuovi dati, aumentando la condizione di overfitting.   
 
@@ -101,13 +101,13 @@ Utilizzando softmax:
 In questo caso utilizzando due strati con funzione di attivazione SoftMax inizialmente si puo notare un peggioramento dell'accuratezza ma anche della funzione di perdita.  
 D'altra parte l'overfitting è minimo e anche se la percentuale di predeizione è calata si ha pero una convergenza migliore tra i valori del training e del validation set.  
 Epoch 10/10  
-1875/1875 [==============================] - 9s 5ms/step - loss: 0.2168 - accuracy: 0.9434 - val_loss: 0.2457 - val_accuracy: 0.9359  
+1875/1875 [=============] - 9s 5ms/step - loss: 0.2168 - accuracy: 0.9434 - val_loss: 0.2457 - val_accuracy: 0.9359  
 
 Utilizzando softplus:  
 Qui invece abbiamo un miglioramento rispetto al modello iniziale già migliorato, l'overfitting è minimo rispetto i valori precedenti e la qualità della predizione sul validation set risulta maggiore.  
 
 Epoch 10/10  
-1875/1875 [==============================] - 8s 4ms/step - loss: 0.0214 - accuracy: 0.9933 - val_loss: 0.0721 - val_accuracy: 0.9807  
+1875/1875 [=============] - 8s 4ms/step - loss: 0.0214 - accuracy: 0.9933 - val_loss: 0.0721 - val_accuracy: 0.9807  
 
 
 **Esercizio 3**  
@@ -133,37 +133,37 @@ Per i dati trattati è stata tolta la conversione to_categorical per trattare i 
 Risultato della computazione:  
 
 Epoch 10/10    
-1875/1875 [==============================] - 7s 4ms/step - loss: 0.0163 - accuracy: 0.9950 - val_loss: 0.0868 - val_accuracy: 0.9769  
+1875/1875 [=============] - 7s 4ms/step - loss: 0.0163 - accuracy: 0.9950 - val_loss: 0.0868 - val_accuracy: 0.9769  
 
 Dai risultati elencati non sembra esserci un miglioramento con la rete di partenza, dall'accuratezza tra i due set di dati si puo notare molto overfitting.
 
 **Esercizio 4**  
 
-Rieseguendo l'ultimo modello modificato come test per visualizzare i grafici per gli indicatori di accuratezza e perdita:
+Rieseguendo l'ultimo modello modificato come test per visualizzare i grafici per gli indicatori di accuratezza e perdita:  
 
-> history = mynet2.fit(x_train,y_train, shuffle=True, epochs=10, batch_size=32,validation_data=(x_test,y_test))
-> # list all data in history
-> print(history.history.keys())
-> # summarize history for accuracy
-> plt.plot(history.history['accuracy'])
-> plt.plot(history.history['val_accuracy'])
-> plt.title('model accuracy')
-> plt.ylabel('accuracy')
-> plt.xlabel('epoch')
-> plt.legend(['train', 'test'], loc='upper left')
-> plt.show()
-# summarize history for loss
-> plt.plot(history.history['loss'])
-> plt.plot(history.history['val_loss'])
-> plt.title('model loss')
-> plt.ylabel('loss')
-> plt.xlabel('epoch')
-> plt.legend(['train', 'test'], loc='upper left')
-> plt.show()
+> history = mynet2.fit(x_train,y_train, shuffle=True, epochs=10, batch_size=32,validation_data=(x_test,y_test))  
+> # list all data in history  
+> print(history.history.keys())  
+> # summarize history for accuracy  
+> plt.plot(history.history['accuracy'])  
+> plt.plot(history.history['val_accuracy'])  
+> plt.title('model accuracy')  
+> plt.ylabel('accuracy')  
+> plt.xlabel('epoch')  
+> plt.legend(['train', 'test'], loc='upper left')  
+> plt.show()  
+# summarize history for loss  
+> plt.plot(history.history['loss'])  
+> plt.plot(history.history['val_loss'])  
+> plt.title('model loss')  
+> plt.ylabel('loss')  
+> plt.xlabel('epoch')  
+> plt.legend(['train', 'test'], loc='upper left')  
+> plt.show()  
 
-Epoch 10/10
-1875/1875 [==============================] - 7s 4ms/step - loss: 0.0163 - accuracy: 0.9951 - val_loss: 0.0886 - val_accuracy: 0.9775
-dict_keys(['loss', 'accuracy', 'val_loss', 'val_accuracy'])
+Epoch 10/10  
+1875/1875 [=============] - 7s 4ms/step - loss: 0.0163 - accuracy: 0.9951 - val_loss: 0.0886 - val_accuracy: 0.9775  
+dict_keys(['loss', 'accuracy', 'val_loss', 'val_accuracy'])   
 
 
-![alt text](https://github.com/Dario66/Deep-Learning/blob/main/IMG1.png)
+![alt text](https://github.com/Dario66/Deep-Learning/blob/main/IMG1.png)  
