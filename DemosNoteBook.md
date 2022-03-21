@@ -8,12 +8,7 @@
 *res = Dense(10,activation='softmax')(xin)*  
 
 *mynet = Model(inputs=xin,outputs=res)*  
-
-Model: "model"  
-
- input_1 (InputLayer)        [(None, 784)]      0                                                                    
- dense (Dense)               (None, 10)         7850        
-                                                                   
+     
 Total params: 7,850  
 Trainable params: 7,850  
 Non-trainable params: 0  
@@ -31,15 +26,7 @@ Epoch 10/10
 *x = Dense(128,activation='relu')(xin)*  
 *res = Dense(10,activation='softmax')(x)*  
 *mynet2 = Model(inputs=xin,outputs=res)*  
-
-**Model: "model_1"**    
-
- input_2 (InputLayer)        [(None, 784)]             0           
-                                                                   
- dense_1 (Dense)             (None, 128)               100480      
-                                                                   
- dense_2 (Dense)             (None, 10)                1290        
-                                                                   
+                    
 Total params: 101,770  
 Trainable params: 101,770  
 Non-trainable params: 0  
@@ -69,15 +56,7 @@ res = Dense(10,activation='softmax')(y)
 mynet2 = Model(inputs=xin,outputs=res)  
 
 
-**Model: "model_2"**  
-
- input_1 (InputLayer)        [(None, 784)]             0           
-                                                                   
- dense (Dense)               (None, 128)               100480      
-                                                                  
- dense_1 (Dense)             (None, 50)                6450        
-                                                                   
- dense_2 (Dense)             (None, 10)                510         
+**Model: "model_2"** 
                                                                    
 Total params: 107,440  
 Trainable params: 107,440  
