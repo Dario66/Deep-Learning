@@ -111,3 +111,19 @@ Epoch 10/10
 
 
 **Esercizio 3**  
+
+Adatto la rete per l'utilizzo di sparse_categorical_crossentropy:
+
+
+> #y_train_cat = tf.keras.utils.to_categorical(y_train)
+> print(y_train_cat[0])
+> #y_test_cat = tf.keras.utils.to_categorical(y_test)
+> xin = Input(shape=(784))
+> x = Dense(128,activation='relu')(xin)
+> res = Dense(10,activation='softmax')(x)
+
+> mynet2 = Model(inputs=xin,outputs=res)
+> mynet2.summary()
+
+> mynet2.compile(optimizer='adam',loss='sparse_categorical_crossentropy',metrics=['accuracy'])
+> mynet2.fit(x_train,y_train, shuffle=True, epochs=10, batch_size=32,validation_data=(x_test,y_test))
