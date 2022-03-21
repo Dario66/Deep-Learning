@@ -9,7 +9,7 @@
 
 *mynet = Model(inputs=xin,outputs=res)*  
 
-**Model: "model"**  
+Model: "model"  
 _______________________________________________  
  Layer (type)                Output Shape              Param #     
 =================================================================  
