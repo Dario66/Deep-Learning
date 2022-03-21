@@ -55,7 +55,7 @@ Epoch 10/10
 *res = Dense(10,activation='softmax')(x)*  
 *mynet2 = Model(inputs=xin,outputs=res)*  
 
-**Model: "model_1"  
+**Model: "model_1"**    
 _________________________________________________________________  
  Layer (type)                Output Shape              Param #     
 =================================================================  
@@ -105,7 +105,7 @@ Exercises
    4- the fit function return a history of training, with temporal sequences for all different metrics. Make a plot.  
 
 
-**1-   
+**1-**   
   
 xin = Input(shape=(784))  
 x = Dense(128,activation='relu')(xin)  
@@ -114,7 +114,7 @@ res = Dense(10,activation='softmax')(y)
 mynet2 = Model(inputs=xin,outputs=res)  
 
 
-Model: "model_2"  
+**Model: "model_2"**  
 _________________________________________________________________  
  Layer (type)                Output Shape              Param #     
 =================================================================  
